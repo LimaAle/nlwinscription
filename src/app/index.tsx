@@ -3,16 +3,17 @@ import { Alert, Image, StatusBar, View } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { colors } from "@/styles/colors";
 import { Button } from "@/components/button";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 import { useState } from "react";
 
 export default function Home() {
   const [code,setCode]=useState("")
 
   function handleAccessCredential(){
-    if(!code.trim()){
-      return Alert.alert("Atenção","Informe o código do ingresso!")
-    }
+    // if(!code.trim()){
+    //   return Alert.alert("Atenção","Informe o código do ingresso!")
+    // }
+    router.push("/ticket")
   }
 
   return (
@@ -33,7 +34,7 @@ export default function Home() {
         </Input>
         <Button title="Acessar credencial" onPress={handleAccessCredential}/>
 
-        <Link href="/register" className="text-gray-100 text-base font-bold text-center mt-8"> Ainda näo possui ingresso?</Link>
+        <Link href="/register" className="text-gray-100 text-base font-bold text-center mt-8"> Ainda não possui ingresso?</Link>
       </View>
     </View>
   )

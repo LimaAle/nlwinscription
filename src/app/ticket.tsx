@@ -7,6 +7,7 @@ import { Button } from "@/components/button";
 import { useState } from "react";
 import * as ImagePicker from "expo-image-picker"
 import { QRCode } from "@/components/qrcode";
+import { MotiView } from "moti";
 
 export default function Ticket() {
   const [image, setImage] = useState("")
@@ -38,14 +39,24 @@ export default function Ticket() {
           onChangeAvatar={handleSelectImage}
           onExpandQRCode={() => setExpandQRCode(true)}
         />
-
-        <FontAwesome
-          name="angle-double-down"
-          size={24}
-          color={colors.gray[300]}
-          className="self-center my-6"
-        />
-
+        <MotiView
+          from={{ translateY: 0 }}
+          animate={{
+            translateY: 10
+          }}
+          transition={{
+            loop:true,
+            type: "timing",
+            duration:500
+          }}
+        >
+          <FontAwesome
+            name="angle-double-down"
+            size={24}
+            color={colors.gray[300]}
+            className="self-center my-6"
+          />
+        </MotiView>
         <Text className="text-white font-bold text-2xl mt-4">Compartilhar credencial</Text>
 
         <Text className="text-white font-regular text-base mt-1 mb-6">Mostre ao mundo que você vai participar do Unite Summit</Text>
